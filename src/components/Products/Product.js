@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { cartCalc, fetchCartItems } from "../../features/cartSlice";
+import { fetchCartItems } from "../../features/cartSlice";
 
 const Product = (props) => {
     const {_id, p_name, price, img, made_in} = props.product;
@@ -21,7 +21,7 @@ const handleProductDetails = (pid) => {
 }
 
 const handleAddToCart = async (pid) => {
-  const url = `http://localhost:5000/api/users/${currUser?.userName}/cart/${currUser?.cart_id}`;
+  const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser?.userName}/cart/${currUser?.cart_id}`;
   
   await axios
       .post(url, {cart_id: currUser.cart_id, pro_id: pid, p_name: p_name, price: price, quantity: 1, productPrice: price})

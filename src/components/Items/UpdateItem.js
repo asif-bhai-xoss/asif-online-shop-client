@@ -24,7 +24,7 @@ const UpdateItem = () => {
     e.preventDefault();
     const product = {p_name: name, desc, price, category: cat, brand, quantity, discount, img, made_in: madeIn}
 
-    const url = `http://localhost:5000/api/products/${pid}`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/products/${pid}`;
     axios.patch(url, product)
     .then(function (response) {
       alert("Product updated!!")

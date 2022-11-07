@@ -31,7 +31,7 @@ useEffect(() => {
 
 const handleConfirmOrder = async () => {
  // console.log(user.userName, user.order_id);
-  const url = `http://localhost:5000/api/users/${user.userName}/order/${user.order_id}`;
+  const url = `https://asif-online-shop-server.herokuapp.com/api/users/${user.userName}/order/${user.order_id}`;
 
   
   const invoice_no = Math.floor(Math.random() * (9999999 - 1000000 + 1)) + 1000000;

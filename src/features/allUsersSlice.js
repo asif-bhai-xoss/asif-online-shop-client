@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchAllUsers = createAsyncThunk("api/users/fetchAllUsers", async() => {
-    const response = await axios.get(`http://localhost:5000/api/users`);
+    const response = await axios.get(`https://asif-online-shop-server.herokuapp.com/api/users`);
     return response.data;
 })
 

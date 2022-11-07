@@ -11,7 +11,7 @@ const Email = () => {
   
   const handleEmailSend = async (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/users/${user?.userName}/send-email`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/${user?.userName}/send-email`;
     const userMail = {
       _id: user._id,
       fullName: user.fullName,
@@ -30,7 +30,7 @@ const Email = () => {
 
   const handleActiveEmail = async (e) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/users/${user.userName}/active/${user._id}`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/${user.userName}/active/${user._id}`;
     const response = await axios.get(url);
     if (response.data.status === 200 || response.data.status === 201) {
       alert(response.data.msg);

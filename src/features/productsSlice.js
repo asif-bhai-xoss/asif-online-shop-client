@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const product_url = "http://localhost:5000/api/products";
+const product_url = "https://asif-online-shop-server.herokuapp.com/api/products";
 
 const initialState = {
     isLoading: false,

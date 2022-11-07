@@ -25,7 +25,7 @@ const AddItem = () => {
     const product = {p_name: name, desc, price, category: cat, brand, quantity, discount, img, made_in: madeIn}
 
 
-    const url = "http://localhost:5000/api/products-save";
+    const url = "https://asif-online-shop-server.herokuapp.com/api/products-save";
     axios.post(url, product)
     .then(function (response) {
       alert("Product added!!")

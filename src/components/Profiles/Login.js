@@ -21,7 +21,7 @@ const Login = () => {
     else{
       const user = { userName, password: pass };
 
-      const url = "http://localhost:5000/api/users/login";
+      const url = "https://asif-online-shop-server.herokuapp.com/api/users/login";
       const response = await axios.post(url, user);
       if (response.data.status === 200 || response.data.status === 201) {
         //https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/

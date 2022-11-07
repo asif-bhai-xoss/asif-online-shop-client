@@ -33,7 +33,7 @@ const CartItems = () => {
       );
       if (ok) {
         const arr1 = [currUser.userName, currUser.cart_id];
-        const url = `http://localhost:5000/api/${currUser.userName}/cartItems/${currUser.cart_id}`;
+        const url = `https://asif-online-shop-server.herokuapp.com/api/${currUser.userName}/cartItems/${currUser.cart_id}`;
         await axios
           .delete(url)
           .then(function (response) {

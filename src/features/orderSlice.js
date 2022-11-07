@@ -7,7 +7,7 @@ export const fetchOrderItems = createAsyncThunk(
     const userName = arr1[0];
     const order_id = arr1[1];
     const response = await axios.get(
-      `http://localhost:5000/api/users/${userName}/orderItems/${order_id}`
+      `https://asif-online-shop-server.herokuapp.com/api/users/${userName}/orderItems/${order_id}`
     );
     return response.data;
   }
@@ -16,7 +16,7 @@ export const fetchAllOrderItems = createAsyncThunk(
   "/api/orderItems/fetchAllOrderItems",
   async () => {
     const response = await axios.get(
-      `http://localhost:5000/api/orderItems`
+      `https://asif-online-shop-server.herokuapp.com/api/orderItems`
     );
     return response.data;
   }

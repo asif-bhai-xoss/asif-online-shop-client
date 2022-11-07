@@ -24,7 +24,7 @@ const Item = (props) => {
     const res = window.confirm("Are you sure you want to delete this?");
     if (res) {
       const result = await axios.delete(
-        `http://localhost:5000/api/products/${pid}`
+        `https://asif-online-shop-server.herokuapp.com/api/products/${pid}`
       );
       if (result.statusText === "OK") {
         alert("Product deleted!!");

@@ -23,14 +23,14 @@ const Register = () => {
     } else {
       const user = { fullName, userName, email, password: pass };
 
-      const url = "http://localhost:5000/api/users/register";
+      const url = "https://asif-online-shop-server.herokuapp.com/api/users/register";
       const response = await axios.post(url, user);
       console.log(response);
       //console.log(response.data.msg);
       if (response.data.status === 200 || response.data.status === 201) {
         alert(response.data.msg);
-        const url = `http://localhost:5000/api/users/${userName}/cart`;
-        const url2 = `http://localhost:5000/api/users/${userName}/order`;
+        const url = `https://asif-online-shop-server.herokuapp.com/api/users/${userName}/cart`;
+        const url2 = `https://asif-online-shop-server.herokuapp.com/api/users/${userName}/order`;
   await axios
       .post(url, {userName: userName})
       .then(async function (response) {

@@ -5,7 +5,7 @@ export const fetchUser = createAsyncThunk(
   "api/users/fetchUser",
   async (userName) => {
     const response = await axios.get(
-      `http://localhost:5000/api/users/${userName}`
+      `https://asif-online-shop-server.herokuapp.com/api/users/${userName}`
     );
     return response.data;
   }

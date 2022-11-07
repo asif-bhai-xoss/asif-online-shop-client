@@ -5,7 +5,7 @@ export const fetchCartItems = createAsyncThunk(
   "/api/users/:userName/cartItems/fetchCartItems",
   async (userName) => {
     const response = await axios.get(
-      `http://localhost:5000/api/users/${userName}/cartItems`
+      `https://asif-online-shop-server.herokuapp.com/api/users/${userName}/cartItems`
     );
     //console.log(response.data);
     return response.data;
@@ -19,7 +19,7 @@ export const deleteCartItems = createAsyncThunk(
     const userName = arr1[0];
     const cart_id = arr1[1];
     const response = await axios.delete(
-      `http://localhost:5000/api/${userName}/cartItems/${cart_id}`
+      `https://asif-online-shop-server.herokuapp.com/api/${userName}/cartItems/${cart_id}`
     );
     //console.log(response.data);
     return response.data;

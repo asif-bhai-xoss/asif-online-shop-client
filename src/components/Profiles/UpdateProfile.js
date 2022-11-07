@@ -14,7 +14,7 @@ const UpdateProfile = () => {
   const handleUpdateProfile = async (e) => {
     e.preventDefault();
     const user = { fullName, address, phone };
-    const url = `http://localhost:5000/api/users/update/${location.state?.currUser?.userName}`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/update/${location.state?.currUser?.userName}`;
     await axios
       .patch(url, user)
       .then(function (response) {

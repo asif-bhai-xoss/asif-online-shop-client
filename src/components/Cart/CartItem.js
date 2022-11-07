@@ -36,7 +36,7 @@ useEffect(()=> {
 
   const handleAddItem = async (e, pid) => {
     e.preventDefault();
-    const url = `http://localhost:5000/api/users/${currUser.userName}/cartItems/${pid}/add`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser.userName}/cartItems/${pid}/add`;
     await axios
       .patch(url, { pid })
       .then(function (response) {
@@ -50,7 +50,7 @@ useEffect(()=> {
       });
   };
   const handleSubItem = async (pid) => {
-    const url = `http://localhost:5000/api/users/${currUser.userName}/cartItems/${pid}/sub`;
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser.userName}/cartItems/${pid}/sub`;
     await axios
       .patch(url, { pid })
       .then(function (response) {
@@ -69,7 +69,7 @@ useEffect(()=> {
     );
     if (ok) {
       console.log(currUser.userName);
-      const url = `http://localhost:5000/api/users/${currUser.userName}/cartItems/${pid}/remove`;
+      const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser.userName}/cartItems/${pid}/remove`;
       await axios
         .delete(url)
         .then(function (response) {

@@ -8,7 +8,9 @@ import {
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { cartCalc, deleteCartItems, fetchCartItems } from "../../features/cartSlice";
+import ToastMsg from "../HF/ToastMsg";
 import CartItem from './CartItem';
 
 const CartItems = () => {
@@ -37,13 +39,13 @@ const CartItems = () => {
         await axios
           .delete(url)
           .then(function (response) {
-            alert(response.data.msg);
+            toast.success(response.data.msg);
          dispatch(deleteCartItems(arr1));
          // dispatch(cartCalc());
           })
           .catch(function (error) {
-            alert(error.message);
-            console.log(error.message);
+            toast.error(error.message);
+           
           });
       }
     }
@@ -138,7 +140,7 @@ const CartItems = () => {
             </MDBBtn>
           </MDBCardBody>
         </MDBCard>
-
+<ToastMsg></ToastMsg>
            </MDBCol>
     </MDBRow>
   </MDBContainer>

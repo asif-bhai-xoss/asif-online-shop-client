@@ -2,11 +2,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, useNavigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import Users from './components/Admin/Users';
 import CartItems from './components/Cart/CartItems';
 import Footer from './components/HF/Footer';
 import Header from './components/HF/Header';
+import ToastMsg from './components/HF/ToastMsg';
 import Home from './components/Home/Home';
 import Page404 from './components/Home/Page404';
 import AddItem from './components/Items/AddItem';
@@ -82,6 +85,7 @@ function App() {
         <Route path="*" element={<Page404></Page404>}/>
       </Routes>
       <Footer></Footer>
+      <ToastMsg />
     </div>
   );
 }

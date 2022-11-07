@@ -11,11 +11,10 @@ import {
   MDBTypography
 } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import ToastMsg from "../HF/ToastMsg";
 
 const CartItem = (props) => {
-  const dispatch = useDispatch();
-  
   const {p_name, pro_id, price, quantity, productPrice} = props.cartItem;
   const currUser = props.currUser;
 
@@ -28,10 +27,6 @@ useEffect(()=> {
   setCurrQ(quantity);
 },[productPrice, quantity])
 
- // const [currProduct, setCurrProduct] = useState({});
-  
-  //const [currPrice, setCurrPrice] = useState(currProduct.price * q);
-  const [total, setTotal] = useState({});
   
 
   const handleAddItem = async (e, pid) => {
@@ -40,9 +35,6 @@ useEffect(()=> {
     await axios
       .patch(url, { pid })
       .then(function (response) {
-       // dispatch(fetchCartItems(currUser.userName));
-        //dispatch(cartCalc());
-        //console.log(response.data.msg);
       })
       .catch(function (error) {
         alert(error.message);
@@ -54,12 +46,9 @@ useEffect(()=> {
     await axios
       .patch(url, { pid })
       .then(function (response) {
-        //dispatch(fetchCartItems(currUser.userName));
-       // dispatch(cartCalc());
-        //console.log(response.data.msg);
       })
       .catch(function (error) {
-        console.log(error.message);
+        toast.error(error.message);
       });
   };
 
@@ -68,18 +57,14 @@ useEffect(()=> {
       `Are you sure you want to remove ${p_name}?`
     );
     if (ok) {
-      console.log(currUser.userName);
       const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser.userName}/cartItems/${pid}/remove`;
       await axios
         .delete(url)
         .then(function (response) {
-          alert(response.data.msg);
-       // dispatch(fetchCartItems(currUser.userName));
-       // dispatch(cartCalc());
+          toast.success(response.data.msg);
         })
         .catch(function (error) {
-          alert(error.message);
-          console.log(error.message);
+          toast.error(error.message);
         });
     }
   };
@@ -147,6 +132,7 @@ useEffect(()=> {
               <MDBIcon fas icon="trash text-danger" size="lg" />
             </a>
           </MDBCol>
+          <ToastMsg />
         </MDBRow>
       </MDBCardBody>
     </MDBCard>

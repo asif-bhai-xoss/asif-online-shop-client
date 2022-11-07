@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { fetchUser } from '../../features/userSlice';
+import ToastMsg from '../HF/ToastMsg';
 
 const Login = () => {
     const [userName, setUserName] = useState("");
@@ -25,11 +27,10 @@ const Login = () => {
       const response = await axios.post(url, user);
       if (response.data.status === 200 || response.data.status === 201) {
         //https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/
-        console.log(response.data);
         //setUser(response.data);
         localStorage.setItem('userName', response.data?.user?.userName)
         localStorage.setItem('activeToken', response.data.activeToken)
-        alert(response.data.msg);
+        toast.success(response.data.msg);
         dispatch(fetchUser(user.userName));
         if(response.data?.user?.confirmedEmail){
           navigate("/home", {replace: true});
@@ -65,6 +66,7 @@ const Login = () => {
         Login
       </Button>
     </Form>
+    <ToastMsg></ToastMsg>
       </div>
     );
 };

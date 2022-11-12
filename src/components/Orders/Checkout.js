@@ -3,7 +3,9 @@ import { MDBBtn, MDBRadio, MDBTable, MDBTableBody, MDBTableHead } from "mdb-reac
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { deleteCartItems } from "../../features/cartSlice";
+import ToastMsg from "../HF/ToastMsg";
 
 const Checkout = () => {
   const {
@@ -48,14 +50,13 @@ const products = cartItems.map(item => ({pro_id: item.pro_id, p_name: item.p_nam
 
 
   await axios.post(url, newOrder).then(result => {
-    alert(result.data.msg);
+    toast.success(result.data.msg);
     const arr1 = [user.userName, user.cart_id];
     dispatch(deleteCartItems(arr1));
     navigate(`/${user.userName}/orders/packaging`);
   })
   .catch(error => {
-    alert(error.message);
-    console.log(error.message);
+    toast.error(error.message);
   })
 }
 const handleBackToCart = () => {
@@ -123,7 +124,7 @@ const handleBackToCart = () => {
       <MDBBtn disabled={payment ? false : true} onClick={handleConfirmOrder} color='success'>Confirm Order</MDBBtn>&nbsp;&nbsp;&nbsp;&nbsp;
       <MDBBtn onClick={handleBackToCart} color='dark'>Back to cart</MDBBtn>
       </div>
-
+      <ToastMsg></ToastMsg>
     </div>
   );
 };

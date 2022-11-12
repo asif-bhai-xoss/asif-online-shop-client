@@ -3,7 +3,9 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { fetchProducts } from "../../features/productsSlice";
+import ToastMsg from "../HF/ToastMsg";
 
 const Item = (props) => {
   const { _id, p_name, price, quantity } = props.product;
@@ -27,7 +29,7 @@ const Item = (props) => {
         `https://asif-online-shop-server.herokuapp.com/api/products/${pid}`
       );
       if (result.statusText === "OK") {
-        alert("Product deleted!!");
+        toast.success("Product deleted!!");
         dispatch(fetchProducts());
       }
     }
@@ -56,6 +58,7 @@ const Item = (props) => {
           Delete
         </Button>
       </td>
+      <ToastMsg></ToastMsg>
     </tr>
   );
 };

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import ToastMsg from "../HF/ToastMsg";
 
 const AddItem = () => {
   const [name, setName] = useState("");
@@ -28,12 +30,12 @@ const AddItem = () => {
     const url = "https://asif-online-shop-server.herokuapp.com/api/products-save";
     axios.post(url, product)
     .then(function (response) {
-      alert("Product added!!")
+      toast.success("Product added!!")
       navigate("/products", {replace: true})
       
     })
     .catch(function (error) {
-      console.log(error.message);
+      toast.error(error.message);
     });
   };
   return (
@@ -95,6 +97,7 @@ const AddItem = () => {
           Add product
         </Button>
       </Form>
+      <ToastMsg></ToastMsg>
     </div>
   );
 };

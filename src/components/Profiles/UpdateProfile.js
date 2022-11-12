@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import ToastMsg from "../HF/ToastMsg";
 
 const UpdateProfile = () => {
   const location = useLocation();
@@ -18,15 +20,13 @@ const UpdateProfile = () => {
     await axios
       .patch(url, user)
       .then(function (response) {
-        alert("Profile updated!!");
+        toast.success("Profile updated!!");
         navigate(`/users/${location.state?.currUser?.userName}`, {
           replace: true,
         });
-        console.log(response);
       })
       .catch(function (error) {
-        alert(error.message);
-        console.log(error.message);
+        toast.error(error.message);
       });
   };
   return (
@@ -91,6 +91,7 @@ const UpdateProfile = () => {
           Update
         </Button>
       </Form>
+      <ToastMsg></ToastMsg>
     </div>
   );
 };

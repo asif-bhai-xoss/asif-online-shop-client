@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import ToastMsg from '../HF/ToastMsg';
 
 const UpdateItem = () => {
   const {pid} = useParams()
@@ -27,12 +29,11 @@ const UpdateItem = () => {
     const url = `https://asif-online-shop-server.herokuapp.com/api/products/${pid}`;
     axios.patch(url, product)
     .then(function (response) {
-      alert("Product updated!!")
+      toast.success("Product updated!!")
       navigate("/products", {replace: true})
-      console.log(response);
     })
     .catch(function (error) {
-      console.log(error.message);
+      toast.error(error.message);
     });
   };
   
@@ -113,6 +114,7 @@ const UpdateItem = () => {
           Update product
         </Button>
       </Form>
+      <ToastMsg></ToastMsg>
     </div>
     );
 };

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import ToastMsg from "../HF/ToastMsg";
 
 const Register = () => {
   const [fullName, setFullName] = useState("");
@@ -34,19 +36,17 @@ const Register = () => {
   await axios
       .post(url, {userName: userName})
       .then(async function (response) {
-        alert(response.data.msg);
+        toast.success(response.data.msg);
         await axios
         .post(url2, {userName: userName, num_of_orders: 0, total_pay: 0})
         .then(async function (response) {
-          alert(response.data.msg);})
+          toast.success(response.data.msg);})
           .catch(function (error) {
-            alert(error.message);
-            console.log(error.message);
+            toast.error(error.message);
           });
       })
       .catch(function (error) {
-        alert(error.message);
-        console.log(error.message);
+        toast.error(error.message);
       });
       //updating cart id...
 
@@ -116,6 +116,7 @@ const Register = () => {
           Register
         </Button>
       </Form>
+      <ToastMsg></ToastMsg>
     </div>
   );
 };

@@ -7,7 +7,9 @@ import {
 } from 'mdb-react-ui-kit';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { fetchAllOrderItems } from '../../features/orderSlice';
+import ToastMsg from '../HF/ToastMsg';
 
 const UpdateOrder = (props) => {
     const [updateModal, setUpdateModal] = useState(true);
@@ -26,11 +28,11 @@ const UpdateOrder = (props) => {
         const url = `http://localhost:5000/api/orderItems/${invoice_no}`;
         const newStatus = {orderStatus: updateStatus};
         await axios.patch(url, newStatus).then(result => {
-            alert(result.data.msg);
+          toast.success(result.data.msg);
         dispatch(fetchAllOrderItems());
         setUpdateModal(false);
         }).catch(error => {
-            alert(error.message);
+          toast.error(error.message);
         })
     }
 
@@ -69,6 +71,7 @@ const UpdateOrder = (props) => {
           </MDBModalContent>
         </MDBModalDialog>
       </MDBModal>
+      <ToastMsg></ToastMsg>
         </div>
     );
 };

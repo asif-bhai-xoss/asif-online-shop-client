@@ -2,10 +2,7 @@ import { MDBBadge } from "mdb-react-ui-kit";
 import React, { useEffect, useState } from "react";
 import {
   Button,
-  Container,
-  Dropdown,
-  DropdownButton,
-  Form,
+  Container, Form,
   Nav,
   Navbar,
   NavDropdown
@@ -59,7 +56,7 @@ const Header = (props) => {
             <Nav.Link as={Link} to="/products">
               All products
             </Nav.Link>
-            <NavDropdown title="Category" id="navbarScrollingDropdown">
+            {/* <NavDropdown title="Category" id="navbarScrollingDropdown">
               <DropdownButton
                 variant="normal"
                 drop="end"
@@ -103,7 +100,7 @@ const Header = (props) => {
 
               <NavDropdown.Divider />
               <NavDropdown.Item href="#action5">All Category</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
             {currUser.role === 'admin' && <NavDropdown title="Dashboard" id="navbarScrollingDropdown">
               <NavDropdown.Item as={Link} to="/users">
                 Users

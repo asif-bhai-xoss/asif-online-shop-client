@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Button, Card, ListGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { fetchCartItems } from "../../features/cartSlice";
+import ToastMsg from '../HF/ToastMsg';
 
 const Product = (props) => {
     const {_id, p_name, price, img, made_in} = props.product;
@@ -21,19 +23,24 @@ const handleProductDetails = (pid) => {
 }
 
 const handleAddToCart = async (pid) => {
-  const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser?.userName}/cart/${currUser?.cart_id}`;
+  if(!user){
+    navigate(`/login`);
+  }
+  else{
+    const url = `https://asif-online-shop-server.herokuapp.com/api/users/${currUser?.userName}/cart/${currUser?.cart_id}`;
   
   await axios
       .post(url, {cart_id: currUser.cart_id, pro_id: pid, p_name: p_name, price: price, quantity: 1, productPrice: price})
       .then(function (response) {
         dispatch(fetchCartItems(currUser.userName));
         //dispatch(cartCalc());
-        alert(response.data.msg);
+        toast.success(response.data.msg);
       })
       .catch(function (error) {
-        alert(error.message);
-        console.log(error.message);
+        toast.error(error.message);
       });
+  }
+  
 }
 
 
@@ -48,6 +55,7 @@ const handleAddToCart = async (pid) => {
         <ListGroup.Item>Made in: {made_in}</ListGroup.Item>
         <ListGroup.Item><Button onClick={() => handleAddToCart(_id)} className="w-100" variant="dark">Add to cart</Button></ListGroup.Item>
       </ListGroup>
+      <ToastMsg></ToastMsg>
     </Card>
 
     );

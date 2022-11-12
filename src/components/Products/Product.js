@@ -23,7 +23,7 @@ const handleProductDetails = (pid) => {
 }
 
 const handleAddToCart = async (pid) => {
-  if(!user){
+  if(Object.keys(user).length === 0 && user.constructor === Object){
     navigate(`/login`);
   }
   else{

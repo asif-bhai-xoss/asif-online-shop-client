@@ -150,8 +150,8 @@ const Header = (props) => {
                 </NavDropdown>
               )}
           </Nav>
-          {/* <Form className="d-flex justify-content-around">
-            <Form.Control
+          <Form className="d-flex justify-content-around">
+            {/* <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"

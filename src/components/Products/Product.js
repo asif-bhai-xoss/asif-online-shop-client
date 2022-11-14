@@ -53,7 +53,7 @@ const handleAddToCart = async (pid) => {
       <ListGroup className="text-start list-group-flush">
         <ListGroup.Item>Price: ${price}</ListGroup.Item>
         <ListGroup.Item>Made in: {made_in}</ListGroup.Item>
-        <ListGroup.Item><Button onClick={() => handleAddToCart(_id)} className="w-100" variant="dark" disabled={user ? false : true}>Add to cart</Button></ListGroup.Item>
+        <ListGroup.Item><Button onClick={() => handleAddToCart(_id)} className="w-100" variant="dark" >Add to cart</Button></ListGroup.Item>
       </ListGroup>
       <ToastMsg></ToastMsg>
     </Card>

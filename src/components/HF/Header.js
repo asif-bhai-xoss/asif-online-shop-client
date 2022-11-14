@@ -150,13 +150,13 @@ const Header = (props) => {
                 </NavDropdown>
               )}
           </Nav>
-          <Form className="d-flex justify-content-around">
+          {/* <Form className="d-flex justify-content-around">
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-            />
+            /> */}
             <Button variant="outline-success">Search</Button>
             <Nav
               className="me-auto ms-3 my-2 my-lg-0"

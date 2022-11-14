@@ -25,7 +25,7 @@ const UpdateOrder = (props) => {
 
     const handleSaveChanges = async () => {
         //console.log(updateStatus)
-        const url = `http://localhost:5000/api/orderItems/${invoice_no}`;
+        const url = `https://asif-online-shop-server.herokuapp.com/api/orderItems/${invoice_no}`;
         const newStatus = {orderStatus: updateStatus};
         await axios.patch(url, newStatus).then(result => {
           toast.success(result.data.msg);

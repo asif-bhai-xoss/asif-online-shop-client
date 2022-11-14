@@ -157,7 +157,7 @@ const Header = (props) => {
               className="me-2"
               aria-label="Search"
             /> */}
-            <Button variant="outline-success">Search</Button>
+            {/* <Button variant="outline-success">Search</Button> */}
             <Nav
               className="me-auto ms-3 my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
